@@ -1,0 +1,8 @@
+{
+  "name": "hacker-chat",
+  "dependencies": {
+    "express": "^4.8.7",
+    "mongoose": "^3.8.15",
+    "socket.io": "^1.0.6"
+  }
+}
