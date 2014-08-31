@@ -1,19 +1,24 @@
 <!doctype html>
-<html>
+<html ng-app="hackerchat">
   <head>
     <title>Hacker Chat</title>
     <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap-theme.min.css">
   </head>
-  <body>
+  <body ng-controller="MainController">
     <div class="jumbotron">
       <div class="container">
-        <h1>Hack Chattanooga Chatting Chatroom of Chatting Hackers</h1>
+        <h1>Welcome to HackerChat</h1>
       </div>
     </div>
+    <div id="view">
+      <div ng-view></div>
+    </div>
     <!--Scripts-->
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="./components/angular/angular.min.js"></script>
+    <script src="./components/angular/angular.js"></script>
+    <script src="./components/angular-route/angular-route.js"></script>
+    <script src="./scripts/app.js"></script>
   </body>
 </html>

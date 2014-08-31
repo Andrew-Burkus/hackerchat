@@ -6,12 +6,12 @@ var io = require('socket.io')(http);
 require('./app/socket/chat')(io);
 
 /*==========  Routing  ==========*/
-var home = require('./routes/index');
-app.use('/', home);
+app.use('/', require('./routes/index'));
+app.use('/login', require('./routes/login'));
 
 /*=============================================
-=            Listening like a Psychiatrist
+=          Listening like a Psychiatrist
 =============================================*/
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(8080, function() {
+  console.log('listening on 8080');
 });
