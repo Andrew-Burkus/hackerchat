@@ -22,8 +22,9 @@ var HackerChat = angular.module('hackerchat',['ngRoute']);
 
 	HackerChat.controller('LoginController', ['$scope', '$http', function($scope, $http) {
 		$scope.data = {};
-		$scope.submit = function() {
-			$http.post('login', $scope.data).
+		$scope.submit = function(data) {
+			console.log(data);
+			$http.post('/login', JSON.stringify(data)).
 			success(function(data) {
 				alert(data);
 			}).

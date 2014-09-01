@@ -1,7 +1,8 @@
 var router = require('express').Router();
-router.post('/', function(req, res) {
-	console.log(req.body);
-	res.send('omg it worked');
-});
+router.route('/')
+	.post(function(req, res) {
+		console.log(req.body);
+		res.send(req.body);
+	});
 
 module.exports = router;
