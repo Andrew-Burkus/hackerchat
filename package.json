@@ -1,5 +1,8 @@
 {
   "name": "hacker-chat",
+  "authors": "Andrew Burkus - da8urk@gmail.com",
+  "version": "0.0.2",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.6.7",
     "express": "^4.8.7",

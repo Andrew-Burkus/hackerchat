@@ -1,0 +1,1 @@
+Simple Socket.io chat app for our community to use and work on together
