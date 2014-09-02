@@ -1,11 +1,39 @@
 <div id="chatbox" class="container">
-	<span class="label label-primary">ChatBox</span>
-	<ul id="messages" class="container"></ul>
-	<!--Chat Input and Send Button-->
-	<div class="input-group input-group-lg">
-		<span class="input-group-addon">
-			<button ng-click="" class="btn btn-success btn-lg">Send</button> TODO: add message send functionality and message diffing
-		</span>
-		<input id="input" type="text" class="form-control">
-	</div>
+	<style>
+		#messages {
+
+		}
+		#send {
+			
+		}
+		.user {
+			background-color: #06aac7;
+		}
+		.other {
+			background-color: #b4afab;
+		}
+	</style>
+	<ul id="messages" class="container">
+		
+	</ul>
+	<form role="form" class="form-signin">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">Say</span>
+			<input id="message" type="text" class="form-control" placeholder="Message...">
+			<span class="input-group-addon">.</span>
+		</div>
+	</form>
+	<script>
+		var user = prompt('Nickname?');
+      	var socket = io();
+		  $('form').submit(function() {
+		  		socket.emit('chat-message', {msg: $('#message').val(), user: user});
+		  		$('#messages').append($('<li>').text('me: ' + $('#message').val())).addClass('user');
+		    	$('#message').val('');
+		    	return false;
+		  });
+		  socket.on('chat-message', function(data) {
+		    $('#messages').append($('<li>').text(data.user + ': ' + data.msg).addClass('other'));
+		  });
+    </script>
 </div>

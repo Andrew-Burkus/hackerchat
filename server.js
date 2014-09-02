@@ -1,6 +1,9 @@
 var app = require('express')();
 var http = require('http').Server(app);
+var parser = require('body-parser');
 var io = require('socket.io')(http);
+
+app.use(parser());
 
 /*==========  Socket Functionality  ==========*/
 require('./app/socket/chat')(io);
