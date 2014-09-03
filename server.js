@@ -1,14 +1,17 @@
+/*=============================================
+=            Actual Server
+=============================================*/
 var app = require('express')();
-var http = require('http').Server(app);
-var parser = require('body-parser');
-var io = require('socket.io')(http);
+var http = require('http').Server(app);//create http web-server
+var io = require('socket.io')(http);//create web-sockets
 
-app.use(parser());
+var parser = require('body-parser');//JSON body parser for $http requests
+app.use(parser());//setting parser
 
 /*==========  Socket Functionality  ==========*/
 require('./app/socket/chat')(io);
 
-/*==========  Routing  ==========*/
+/*==========  API-Routing  ==========*/
 app.use('/', require('./routes/index'));
 app.use('/login', require('./routes/login'));
 

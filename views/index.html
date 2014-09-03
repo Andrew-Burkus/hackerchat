@@ -1,24 +1,57 @@
 <!doctype html>
-<html ng-app="hackerchat">
+<html>
   <head>
     <title>Hacker Chat</title>
     <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap-theme.min.css">
   </head>
-  <body ng-controller="LoginController">
+  <body>
     <div class="jumbotron">
       <div class="container">
         <h1>Welcome to HackerChat</h1>
       </div>
     </div>
-    <div id="view">
-      <div ng-view></div>
+    <div id="chatbox" class="container">
+  <style>
+    #messages {
+
+    }
+    #send {
+      
+    }
+    .user {
+      background-color: #06aac7;
+    }
+    .other {
+      background-color: #b4afab;
+    }
+  </style>
+  <ul id="messages" class="container">
+    
+  </ul>
+  <form role="form" class="form-signin">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">Say</span>
+      <input id="message" type="text" class="form-control" placeholder="Message...">
+      <span class="input-group-addon">.</span>
     </div>
-    <!--Scripts-->
-    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="./components/angular/angular.js"></script>
-    <script src="./components/angular-route/angular-route.js"></script>
-    <script src="./scripts/app.js"></script>
+  </form>
+  <!--Scripts-->
+  <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    var user = prompt('Nickname?');
+        var socket = io();
+      $('form').submit(function() {
+          socket.emit('chat-message', {msg: $('#message').val(), user: user});
+          $('#messages').append($('<li>').text('me: ' + $('#message').val())).addClass('user');
+          $('#message').val('');
+          return false;
+      });
+      socket.on('chat-message', function(data) {
+        $('#messages').append($('<li>').text(data.user + ': ' + data.msg).addClass('other'));
+      });
+    </script>
+</div>
   </body>
 </html>
