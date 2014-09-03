@@ -13,7 +13,6 @@ require('./app/socket/chat')(io);
 
 /*==========  API-Routing  ==========*/
 app.use('/', require('./routes/index'));
-app.use('/login', require('./routes/login'));
 
 /*=============================================
 =          Listening like a Psychiatrist
